@@ -8,10 +8,10 @@
 		$params = array();
 		$params['start_time'] = "start_time";
 		$params['stop_time']  = "stop_time";
+		$params["offset"]  = "offset";
 		$params["options"][]  = "organizations";
 		$params["options"][]  = "projects";
 		$params["options"][]  = "users";
-		$params["options"][]  = "offset";
 		
 		
 		
@@ -30,29 +30,26 @@
 			$stop_time = $_POST['stop_time'];
 
 			$options = $_POST['options'];
-			$screenshots = $hubstaff->screenshots($start_time, $stop_time,$options);
-			echo $datetime_start->format(DateTime::ISO8601);
-			echo "<br>";
-			echo $datetime_end->format(DateTime::ISO8601);
+			if(!$offset)
+			{
+				$offset = 0;
+			}
+			$screenshots = $hubstaff->screenshots($start_time, $stop_time, $offset, $options);
 			if(isset($screenshots->error))
 			{
 				echo '<div class = "info" >'.$screenshots->error.'</div>';
-			}else
-			{
-				
 			}
 		}
-	?>
-	<?php 
-		
+
 		if($screenshots){
 			foreach($screenshots->screenshots as $screenshot)
 			{
 				echo "<img src = '".$screenshot->url."' />";
 			}
 		}	
+	
 	?>
-	<form method = "post" action = "http://<?php echo $_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>" >
+	<form method = "post" action = "http://<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]; ?>" >
 		<div class="container">
 		    <div class="row">
 		        <div class='col-md-12'>

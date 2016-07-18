@@ -65,7 +65,7 @@
 			
 	}	
 	?>
-	<form method = "post" action = "http://<?php echo $_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>" >
+	<form method = "post" action = "http://<?php echo $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]; ?>" >
 		<div class="container">
 		    <div class="row">
 		        <div class='col-md-12'>
