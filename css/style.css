@@ -1,0 +1,90 @@
+body {
+    margin: 0px;
+    font-family: helvetica;
+}
+.second-header h2 {
+    font-size: 23px;
+}
+.second-header h3 {
+    font-size: 20px;
+}
+.second-header h5 {
+    font-size: 16px;
+}
+.second-header h4 {
+    font-size: 18px;
+}
+
+.header{
+    display: inline-block;
+    text-align: right;
+    width: 100%;
+    background: #017dad;
+    color: white;
+    margin: 0px;
+}
+.header a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: inline-block;
+    font-weight: 100;
+}
+.content
+{
+	padding: 2%;
+}
+.content h1 {
+    margin: 0px;
+    border-bottom: 1px solid rgba(1, 125, 173, 0.18);
+    padding-bottom: 7px;
+}
+.content h5 {
+    margin: 10px 0px 0px;
+    font-weight: 200;
+    font-size: 16px;
+}
+.connect,input[type="submit"],.second-header .link {
+    background: #017dad;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 100;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+input[type="submit"] {
+    font-size: 13px;
+    border: none;
+}
+input[type="text"] {
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 9px;
+    font-size: 13px;
+    font-weight: 300;
+    outline: none;
+    border: 1px solid gainsboro;
+    box-shadow: none;
+    border-radius: 0px;
+    margin: 15px 0px;
+    display: inline-table;
+}
+.input-container span.title {
+    width: 181px;
+    display: inline-block;
+}
+
+.info {
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 100;
+}
+.container {
+    margin: 0px;
+    padding: 0px;
+}
+.dropdown-menu {
+    display: inline-block;
+}
