@@ -1,9 +1,6 @@
 <?php 
-
-	define("App_Token","");
-	define("auth_token",""); 
 	
-	$_SESSION['root'] = $_SERVER['DOCUMENT_ROOT']."/sample_app/hubstaff/"; // Hubstaff library directory
+	$_SESSION['root'] = $_SERVER['DOCUMENT_ROOT']."/sample_app/hubstaff/"; //// your hubstaff project directory
 	
 	define("BASE_URL","https://api.hubstaff.com/v1/");
 	define("AUTH","auth");
