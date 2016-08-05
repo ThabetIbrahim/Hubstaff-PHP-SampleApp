@@ -1,47 +1,42 @@
 <?php 
-	require_once $_SESSION['root']."helper/curl.php";
-	class userauth
+	namespace Hubstaff\Client
 	{
-		
-		public $is_auth = 0;
-		function __construct() {
-			if(is_file("./store/auth.txt"))
-			{
-				$this->is_auth = 1;
-			}else
-			{
-				$this->is_auth = 0;
-			}
-		}	
-   		public function auth($app_token, $email, $password,$url)
+		require_once $_SESSION['root']."helper/curl.php";
+		class userauth
 		{
-			if($_SESSION['Auth-Token'])
+	   		public function auth($app_token, $email, $password,$url)
 			{
-				$data['auth_token'] = $_SESSION['Auth-Token'];
-			}else
-			{
-				$fields["App-token"] = $app_token;
-				$fields["email"] = $email;
-				$fields["password"] = $password;
-			
-				$parameters["App-token"] = "header";
-				$parameters["email"] = "";
-				$parameters["password"] = "";
-				$curl = new curl();
-				$auth_data = json_decode($curl->send($fields, $parameters, $url, 1));
-				if(isset($auth_data->user))
+				unset($_SESSION['Auth-Token']);
+				if(isset($_SESSION['Auth-Token']))
 				{
-					$data['auth_token'] = $auth_data->user->auth_token;				
-					$_SESSION['Auth-Token'] = $data['auth_token'];
+					if($_SESSION['Auth-Token'])
+						$data['auth_token'] = $_SESSION['Auth-Token'];
+				}else
+				{
+					$fields["App-token"] = $app_token;
+					$fields["email"] = $email;
+					$fields["password"] = $password;
+				
+					$parameters["App-token"] = "header";
+					$parameters["email"] = "";
+					$parameters["password"] = "";
+					$curl = new curl;
+					$auth_data = json_decode($curl->send($fields, $parameters, $url, 1));
+					if(isset($auth_data->user))
+					{
+						$data['auth_token'] = $auth_data->user->auth_token;				
+						$_SESSION['Auth-Token'] = $data['auth_token'];
+					}
+					else {
+						$data['error'] =	$auth_data->error;
+					}
 				}
-				else {
-					$data['error'] =	$auth_data->error;
-				}
+
+				return $data;			
+				
 			}
-			return $data;			
 			
 		}
-		
+	
 	}
-
 ?>

@@ -2,23 +2,21 @@
 	<?php 
 	$email = '';
 	$password = '';
-
-
+	$app_token = '';
 	if($_SERVER['REQUEST_METHOD'] == "POST" && !$_SESSION['Auth-Token'])
 	{
 		$email = $_POST['email'];
 		$password = $_POST['password'];
-		$data = $hubstaff->auth($_POST['email'],$_POST['password']);
-		if(isset($data['auth_token']))
+		$data = $hubstaff->auth($email,$password);
+		if(!isset($data['error']))
 		{
-			$_SESSION['Auth-Token'] = $data['auth_token'];
 			echo "<div class = 'info'>Your auth token is: ".$data['auth_token']."</div>";
 		}else
 		{
 			echo "<div class = 'info'>error: ".$data['error']."</div>";
 		}
 		
-	}else if(!auth_token)
+	}else if($_SESSION['Auth-Token'])
 	{
 			echo "<div class = 'info'>Your auth token is: ".$_SESSION['Auth-Token']."</div>";
 	}
@@ -35,7 +33,7 @@
 	</div>
 	<?php }else{
 		?>
-		<div class = "info" >Connection to hubstaff: online</div>
+		<div class = "info" >Connection to hubstaff: on</div>
 		<?php
 	} ?>
 </div>
