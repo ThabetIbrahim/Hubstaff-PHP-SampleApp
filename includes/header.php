@@ -20,7 +20,7 @@
 	}else
 	{
 			include("hubstaff/hubstaff.php");
-			$hubstaff = new hubstaff\Client("JDzYL7shxiaCCx0_Hta3MT6WlgYWmZ1vqQa4Y91hM00");
+			$hubstaff = new hubstaff\Client("< your hubstaff app token >");
 		?>
 
 			<div class = "btn-group" style = "float: left;">
