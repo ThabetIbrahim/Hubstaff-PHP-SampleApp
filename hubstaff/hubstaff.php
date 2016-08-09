@@ -6,16 +6,20 @@
 		{
 			function __construct($app_token) {
 				$_SESSION['App-Token'] = $app_token;
-				if(!isset($_SESSION['Auth-Token']))
+				if(!isset($_SESSION['Auth-Token']) || !$_SESSION['Auth-Token'])
 				{
 					if(is_file($_SESSION['root']."store/auth.txt"))
 					{
-						if(filesize("store/auth.txt") > 0)
+						if(filesize($_SESSION['root']."store/auth.txt") > 0)
 						{
-							$auth_token_file = fopen("store/auth.txt","r");
-							$_SESSION['Auth-Token'] = fread($auth_token_file,$_SESSION['root'].filesize("store/auth.txt"));						
+							$auth_token_file = fopen($_SESSION['root']."store/auth.txt","r");
+							$_SESSION['Auth-Token'] = fread($auth_token_file,filesize($_SESSION['root']."store/auth.txt"));						
 						}
 	
+					}else
+					{
+						$auth_token_file = fopen($_SESSION['root']."store/auth.txt","w");
+						chmod($_SESSION['root']."store/auth.txt",0600);					
 					}
 				}
 					
@@ -34,15 +38,7 @@
 					return $auth_token["error"];
 				}
 				$_SESSION['Auth-Token'] = $auth_token["auth_token"];
-				if(!is_file($_SESSION['root']."store/auth.txt"))
-				{			
-					$auth_token_file = fopen($_SESSION['root']."store/auth.txt","w");
-					chmod($_SESSION['root']."store/auth.txt",0600);					
-				}	
-				else 
-				{
-					$auth_token_file = fopen($_SESSION['root']."store/auth.txt","w");
-				}
+				$auth_token_file = fopen($_SESSION['root']."store/auth.txt","w");
 				fwrite($auth_token_file,$auth_token["auth_token"]);
 				return 	$auth_token;
 			}
@@ -60,7 +56,7 @@
 			public function find_user_orgs($id,$offset = 0)
 			{
 				$users = new Client\users;
-				$users->find_user_orgs($offset, sprintf(BASE_URL.FIND_USER_ORG,$id));
+				return $users->find_user_orgs($offset, sprintf(BASE_URL.FIND_USER_ORG,$id));
 			}
 			public function find_user_projects($id,$offset = 0)
 			{

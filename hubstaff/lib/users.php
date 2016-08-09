@@ -47,7 +47,7 @@
 				
 				$curl = new curl;
 	
-				$org_data = json_decode($curl->send($fields, $parameters, $url));		
+				$org_data = json_decode($curl->send($fields, $parameters, $url));
 				return $org_data;	
 			}
 			public function find_user_projects($offset, $url)
