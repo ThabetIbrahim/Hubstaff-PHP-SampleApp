@@ -20,7 +20,6 @@
 				if(isset($auth_data->user))
 				{
 					$data['auth_token'] = $auth_data->user->auth_token;				
-					$_SESSION['Auth-Token'] = $data['auth_token'];
 				}
 				else {
 					$data['error'] =	$auth_data->error;

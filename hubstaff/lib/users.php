@@ -3,10 +3,11 @@
  	{
 		class users
 		{
-			public function getusers($organization_memberships , $project_memberships , $offset ,$url)
+			public function getusers($auth_token, $app_token, $organization_memberships , $project_memberships , $offset ,$url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				$fields["organization_memberships"] = (int)$organization_memberships;
 				$fields["project_memberships"] = (int)$project_memberships;
 				$fields["offset"] = $offset;
@@ -22,10 +23,10 @@
 				$users_data = json_decode($curl->send($fields, $parameters, $url));		
 				return $users_data;	
 			}
-			public function find_user($url)
+			public function find_user($auth_token, $app_token,$url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 	
 				$parameters["Auth-Token"] = "header";
 				$parameters["App-token"] = "header";
@@ -35,10 +36,10 @@
 				$user_data = json_decode($curl->send($fields, $parameters, $url));	
 				return $user_data;		
 			}
-			public function find_user_orgs($offset, $url)
+			public function find_user_orgs($auth_token, $app_token, $offset, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				$fields["offset"] = $offset;
 	
 				$parameters["Auth-Token"] = "header";
@@ -50,10 +51,10 @@
 				$org_data = json_decode($curl->send($fields, $parameters, $url));
 				return $org_data;	
 			}
-			public function find_user_projects($offset, $url)
+			public function find_user_projects($auth_token, $app_token, $offset, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				$fields["offset"] = $offset;
 	
 				$parameters["Auth-Token"] = "header";
@@ -66,5 +67,6 @@
 				return $org_data;	
 			}
 		}
+
 	}
 ?>

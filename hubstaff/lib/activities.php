@@ -3,10 +3,10 @@
 	{
 		class activities
 		{
-			public function getactivities($starttime, $endtime, $offset, $options, $url)
+			public function getactivities($auth_token, $app_token, $starttime, $endtime, $offset, $options, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				$fields["start_time"] = $starttime;
 				$fields["stop_time"] = $endtime;
 	

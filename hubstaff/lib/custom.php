@@ -3,10 +3,10 @@
 	{
 		class custom
 		{
-			public function custom_report($start_date, $end_date, $options, $url)
+			public function custom_report($auth_token, $app_token, $start_date, $end_date, $options, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				$fields["start_date"] = $start_date;
 				$fields["end_date"] = $end_date;
 	

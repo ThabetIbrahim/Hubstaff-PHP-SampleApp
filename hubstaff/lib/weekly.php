@@ -3,10 +3,10 @@
 	{
 		class weekly
 		{
-			public function weekly_team($options, $url)
+			public function weekly_team($auth_token, $app_token, $options, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				if(isset($options['date']))
 				{
 					$fields['date'] = $options['date'];
@@ -37,10 +37,10 @@
 				return $org_data;	
 			}
 	
-			public function weekly_my($options, $url)
+			public function weekly_my($auth_token, $app_token, $options, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				if(isset($options['date']))
 				{
 					$fields['date'] = $options['date'];

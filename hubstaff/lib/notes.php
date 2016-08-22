@@ -3,10 +3,10 @@
 	{
 		class notes
 		{
-			public function getnotes($starttime, $endtime, $offset, $options, $url)
+			public function getnotes($auth_token, $app_token, $starttime, $endtime, $offset, $options, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				$fields["start_time"] = $starttime;
 				$fields["stop_time"] = $endtime;
 	
@@ -41,10 +41,10 @@
 				return $org_data;	
 			}
 	
-			public function find_note($url)
+			public function find_note($auth_token, $app_token, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 	
 				$parameters["Auth-Token"] = "header";
 				$parameters["App-token"] = "header";

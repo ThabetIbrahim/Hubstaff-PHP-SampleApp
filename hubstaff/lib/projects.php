@@ -3,10 +3,10 @@
 	{
 		class projects
 		{
-			public function getprojects($status, $offset , $url)
+			public function getprojects($auth_token, $app_token, $status, $offset , $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				$fields["offset"] = $offset;
 				if($status)
 					$fields["status"] = $status;
@@ -22,10 +22,10 @@
 				$proj_data = json_decode($curl->send($fields, $parameters, $url));		
 				return $proj_data;	
 			}
-			public function find_project($url)
+			public function find_project($auth_token, $app_token, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 	
 				$parameters["Auth-Token"] = "header";
 				$parameters["App-token"] = "header";
@@ -35,10 +35,10 @@
 				$proj_data = json_decode($curl->send($fields, $parameters, $url));	
 				return $proj_data;		
 			}
-			public function find_project_members($offset, $url)
+			public function find_project_members($auth_token, $app_token, $offset, $url)
 			{
-				$fields["Auth-Token"] = $_SESSION['Auth-Token'];
-				$fields["App-token"] = $_SESSION['App-Token'];
+				$fields["Auth-Token"] = $auth_token;
+				$fields["App-token"] = $app_token;
 				$fields["offset"] = $offset;
 	
 				$parameters["Auth-Token"] = "header";
