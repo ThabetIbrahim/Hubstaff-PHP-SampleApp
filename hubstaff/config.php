@@ -1,8 +1,6 @@
 <?php 
 	
-	
-	$_SESSION['root'] = __DIR__."/";
-
+	define("ROOT_FOLDER",__DIR__."/");
 	define("BASE_URL","https://api.hubstaff.com/v1/");
 	define("AUTH","auth");
 	define("USERS","users");
@@ -36,14 +34,15 @@
 	define("CUSTOM_PROJECT_TEAM","custom/by_project/team");
 	define("CUSTOM_PROJECT_MY","custom/by_project/my");
 
-	require_once($_SESSION['root']."lib/auth.php");
-	require_once($_SESSION['root']."lib/users.php");
-	require_once($_SESSION['root']."lib/organizations.php");
-	require_once($_SESSION['root']."lib/projects.php");
-	require_once($_SESSION['root']."lib/activities.php");
-	require_once($_SESSION['root']."lib/screenshots.php");
-	require_once($_SESSION['root']."lib/notes.php");
-	require_once($_SESSION['root']."lib/weekly.php");
-	require_once($_SESSION['root']."lib/custom.php");
-	
+	require_once(ROOT_FOLDER."lib/auth.php");
+	require_once(ROOT_FOLDER."lib/users.php");
+	require_once(ROOT_FOLDER."lib/organizations.php");
+	require_once(ROOT_FOLDER."lib/projects.php");
+	require_once(ROOT_FOLDER."lib/activities.php");
+	require_once(ROOT_FOLDER."lib/screenshots.php");
+	require_once(ROOT_FOLDER."lib/notes.php");
+	require_once(ROOT_FOLDER."lib/weekly.php");
+	require_once(ROOT_FOLDER."lib/custom.php");
+	require_once(ROOT_FOLDER."helper/curl.php");
+		
 ?>
