@@ -3,7 +3,8 @@
 	$email = '';
 	$password = '';
 	$app_token = '';
-	if($_SERVER['REQUEST_METHOD'] == "POST" && !$_SESSION['Auth-Token'])
+
+	if($_SERVER['REQUEST_METHOD'] == "POST" && !$hubstaff->get_auth_token())
 	{
 		$email = $_POST['email'];
 		$password = $_POST['password'];
@@ -16,12 +17,12 @@
 			echo "<div class = 'info'>error: ".$data['error']."</div>";
 		}
 		
-	}else if($_SESSION['Auth-Token'])
+	}else if($hubstaff->get_auth_token())
 	{
-			echo "<div class = 'info'>Your auth token is: ".$_SESSION['Auth-Token']."</div>";
+			echo "<div class = 'info'>Your auth token is: ".$hubstaff->get_auth_token()."</div>";
 	}
 
-	if(!$_SESSION['Auth-Token']){ ?>
+	if(!$hubstaff->get_auth_token()){ ?>
 	<a href = "#" class = "connect" >Connect to Hubstaff</a>
 	<div class = "hubstaff-form" <?php if($_SERVER['REQUEST_METHOD'] != "POST"){ ?>style = "display: none" <?php } ?> >
 		<form method = "post" action = "http://<?php echo $_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>" >
