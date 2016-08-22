@@ -2,7 +2,6 @@
 	<?php 
 	$email = '';
 	$password = '';
-	$app_token = '';
 
 	if($_SERVER['REQUEST_METHOD'] == "POST" && !$hubstaff->get_auth_token())
 	{
